@@ -128,7 +128,6 @@ num_points=num_points= (nr of points of the input point clouds)
 root = Path("-------Preprocessed Dataset folder path-----------")
 path_saved_model
 
-##PFull classification pipeline
 
 
 ## Full Classification model in ROS
