@@ -7,7 +7,7 @@ Making predictions using collections of 3D points is necessary for using ToF dat
 ## Overview
 The network architecture is RGCNN from Te 2018.
 
-##Prerequisites
+## Prerequisites
 
 We use ROS-melodic
 Open3d==0.3.5
@@ -147,7 +147,7 @@ label_to_names = {0: 'object0',
                   3: 'object3',
                   4: 'object4'}
 
-path_saved_model="/home/alex/Alex_documents/RGCNN_git/Git_folder/model_512_points.pt"
+path_saved_model="-- Path to .pt model --"
 
 
 
