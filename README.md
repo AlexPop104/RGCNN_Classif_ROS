@@ -66,6 +66,10 @@ rosbag play -l   file_recording.bag
 Third terminal:
 roslaunch pcl_tutorial tutorial_online.launch
 
+Demo rosbags can be found in the folder data/rosbags. These contain only the /no_floor_topic due to size.
+
+You need to change in rviz the Fixed Frame Header to camera_depth_optical_frame to vizualize the topic /no_floor_out in rviz
+
 
 ## Data preparation for training
 
