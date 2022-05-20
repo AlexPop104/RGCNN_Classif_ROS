@@ -20,23 +20,28 @@ catkin_make
 
 In separate terminals in the ROS_nodes_ws folder type source devel/setup.bash
 
-The launch file uses first a voxelization module and then a passthrough filter with adjustable parameters. 
+The launch file starts first a voxelization module and then a passthrough filter with adjustable parameters. 
 The remove_floor module performes euclidean extraction of the largest plane which should be the floor, leaving only the object.
 The open3d_sampling_node.py module performs sampling on the point cloud from the topic /no_floor_out
 
 The topic /no_floor_out contains the point cloud without the floor which must be used for classification.
 The topic /Segmented_Point_Cloud contains the point cloud sampled at the desired number of points
 
+If a different camera is used, than in tutorial_online.launch the input must be changed for the voxel filter as follows
+
+<node pkg="pcl_tutorial" type="voxel_filter_node" name="voxel_filter_node" output="screen" >
+<remap from="point_cloud_in" to="/REQUIRED_TOPIC" />
+</node>
+
 ## ROS Data using live camera
 
 For live camera, use in different terminals the following:
 
-(for the Kinect camera) In first terminal use:
+(for the Kinect camera) First terminal:
 roslaunch openini2_launch openini2.launch 
 
-In second terminal use:
+Second terminal:
 roslaunch pcl_tutorial tutorial_online.launch
-
 
 
 ## ROS Data using rosbag point cloud recordings.
@@ -151,7 +156,36 @@ path_saved_model="-- Path to .pt model --"
 
 
 
+### Full pipeline classification with live camera 
 
+In separate terminal we use 
+
+
+First terminal at location RGCNN_CLASSIF_ROS/Ros_nodes_ws:
+roslaunch openini2_launch openini2.launch 
+
+Second terminal at location RGCNN_CLASSIF_ROS/Ros_nodes_ws:
+roslaunch pcl_tutorial tutorial_online.launch
+
+Third terminal at location RGCNN_CLASSIF_ROS
+python3 ROS_node_classification_only_model_cam_v2.py
+
+Example of camera usage can be seen at https://www.youtube.com/watch?v=bodgqR-aSwg
+
+### Full pipeline classification with rosbag
+
+
+First terminal at location RGCNN_CLASSIF_ROS/Ros_nodes_ws:
+roscore 
+
+First terminal at location (---rosbag location---):
+rosbag play -l  desired_rosbag.bag
+
+Second terminal at location RGCNN_CLASSIF_ROS/Ros_nodes_ws:
+roslaunch pcl_tutorial tutorial_online.launch
+
+Third terminal at location RGCNN_CLASSIF_ROS
+python3 ROS_node_classification_only_model_cam_v2.py
 
 
 
