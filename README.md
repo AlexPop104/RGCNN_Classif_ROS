@@ -11,7 +11,7 @@ The network architecture is RGCNN from Te 2018.
 
 We use ROS-melodic
 Open3d==0.3.5
-Pytorch geometric
+Pytorch geometric==2.3
 
 ## Starting the ROS Data acquisition pipeline
 
