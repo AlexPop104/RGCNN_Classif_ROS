@@ -13,9 +13,6 @@ from torch_geometric.data.dataset import Dataset
 from pathlib import Path
 import scipy.spatial.distance
 
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix
-
 from torch_geometric.nn import fps
 from math import floor 
 
