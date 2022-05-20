@@ -7,6 +7,15 @@ Making predictions using collections of 3D points is necessary for using ToF dat
 ## Overview
 The network architecture is RGCNN from Te 2018.
 
+## Content
+- [Prerequisites](#prerequisites)
+- [Starting the ROS Data acquisition pipeline](#start_ros_data)
+- [Data preparation for training](#data_prep)
+- [Training and testing the network](#train_test_network)
+- [Full Classification model in ROS](#ros_classif)
+
+
+
 ## Prerequisites
 
 We use ROS-melodic
@@ -33,7 +42,7 @@ If a different camera is used, than in tutorial_online.launch the input must be 
 <remap from="point_cloud_in" to="/REQUIRED_TOPIC" />
 </node>
 
-## ROS Data using live camera
+### ROS Data using live camera
 
 For live camera, use in different terminals the following:
 
@@ -44,7 +53,7 @@ Second terminal:
 roslaunch pcl_tutorial tutorial_online.launch
 
 
-## ROS Data using rosbag point cloud recordings.
+### ROS Data using rosbag point cloud recordings.
 
 For rosbag recording of point clouds, start another terminal in the folder containing the .bag file and use the
 
@@ -106,7 +115,9 @@ loader_train = DenseDataLoader(train_dataset, batch_size=8)
 loader_test = DenseDataLoader(test_dataset, batch_size=8)
 
 
-## Training the network
+## Training and testing the network
+
+### Training the network
 
 The network training is done in RGCNN_Classif_cam.py
 
@@ -118,7 +129,7 @@ num_points= (nr of points of the input point clouds)
 parent_directory=("----- Path to folder containing models--------")
 root = Path("-------Preprocessed Dataset folder path-----------")
 
-## Testing the network
+### Testing the network
 
 Loading and testing a model is done on TEST_RGCNN_cam_data.py
 
